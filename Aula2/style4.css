@@ -15,3 +15,11 @@ li {
     width: 1200px;
     margin: auto;
 }
+
+header {
+    background-color: aqua;
+}
+
+footer {
+    background-color: brown;
+}
