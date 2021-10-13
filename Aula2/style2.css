@@ -1,0 +1,23 @@
+.conteudo {
+    background-color: aqua;
+}
+
+/* small {
+    background-color: blue;
+} */
+
+.conteudo small {
+    background-color: bisque;
+}
+
+.conteudo h4 {
+    font-size: 60px;
+}
+
+.conteudo p {
+    font-size: 30px;
+}
+
+.conteudo2 h4 {
+    font-size: 20px;
+}

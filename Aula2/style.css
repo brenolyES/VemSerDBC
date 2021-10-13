@@ -1,0 +1,58 @@
+body, html, * {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: white;
+    background-color: black;
+    font-size: 50px;
+    text-decoration: underline;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p {
+    color: black;
+    text-align: justify;
+    line-height: 15px;
+    letter-spacing: 5px;
+}
+
+ul {
+    /* border-width: 4px;
+    border-style: solid;
+    border-color: blue; */
+    /* border: 4px solid black; */
+    border-top: 4px solid black;
+    border-bottom: 4px solid blue;
+}
+
+li {
+    /* border-bottom: 1px solid red; */
+    /* text-shadow: 2px 2px red; */
+    list-style-type: none;
+}
+
+.class1 {
+    background-color: aqua;
+}
+
+.class2 {
+    color: white;
+}
+
+#id1 {
+    background-color: blueviolet;
+}
+
+.pa1 {
+    background-color: brown;
+}
+
+.mp {
+    background-color: brown;
+    margin: 10px;
+    border: 2px solid black;
+    padding: 20px;
+}
