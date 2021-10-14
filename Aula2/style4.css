@@ -79,6 +79,21 @@ footer {
     float: right;
 }
 
+.menuP2 {
+    position: absolute;
+    padding-top: 16px;
+    padding-left: 10px;
+    padding-bottom: 15px;
+    color: white;
+}
+
+
+header {
+    position: -webkit-sticky; /* Necessário para funcionar no Safari */
+    position: sticky;
+    top: 0;
+}
+
 .footerConteudo ul li {
     display: inline;
 }
@@ -139,7 +154,7 @@ td, tr {
 }
 
 .imagens img:hover {
-    box-shadow: rgba(75, 75, 75, 0.16) 0px 3px 6px, rgb(75, 75, 75) 0px 3px 6px;
+    box-shadow: rgb(255, 4, 4) 0px 3px 6px, rgb(255, 4, 4) 0px 3px 6px;
 }
 
 .mapa .container{
@@ -149,12 +164,12 @@ td, tr {
 }
 
 .mapa .container h3{
-    text-align: start;
+    text-align: c;
     padding: 16px 0px 8px 40px;
 }
 
 .mapa .iframeMapa {
-    
+    text-align: center;
     padding-left: 40px;
     padding-bottom: 48px;
     padding-right: 40px;
