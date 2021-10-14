@@ -1,0 +1,33 @@
+.teste p:nth-child(2){
+    background-color: blueviolet;
+}
+
+.teste p:last-child {
+    background-color: blue;
+}
+
+.teste p:first-child {
+    background-color: aquamarine;
+}
+
+nav ul li:first-child {
+    color: red;
+    background-color: blue;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 80px;
+}
+
+nav ul li::before{
+    content: '';
+    display: inline-block;
+    background-image: url(./cogumelo.jpeg);
+    width: 10px;
+    height: 10px;
+    background-size: contain;
+}
+
+
+/* p:not(.pa) {color: brown;} */
