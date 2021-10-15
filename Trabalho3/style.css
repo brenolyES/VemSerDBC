@@ -1,0 +1,150 @@
+html, body, * {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+body {
+    background-color: #EFF3F8;
+}
+
+footer {
+    height: 50px;
+    background-color: white;
+}
+
+footer nav {
+    text-align:  center;
+    padding-top: 15px;
+}
+
+footer ul li {
+    display: inline;
+}
+
+footer nav ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+footer nav ul li a img{
+    padding-right: 5px;
+}
+
+footer li {
+    margin-right: 120px;
+}
+
+footer li {
+    margin-right: 120px;
+}
+
+footer ul li:nth-child(6) {
+    margin-right: 0px;
+}
+
+header {
+    height: 50px;
+    background-color: #1A75C1;
+}
+
+
+header div img.logo {
+    margin-top: 10px;
+    width: 80px;
+}
+
+header div span.pesquisarData {
+    position: absolute;
+}
+
+header div span input.searchBar {
+    all: unset;
+    margin-left: 70px;
+    margin-top: 10px;
+    border-style: none;
+    border-radius: 10px;
+    height: 25px;
+    width: 400px;
+    padding-left: 10px;
+    background-color: white;
+}
+
+
+header div span input.searchBar::placeholder {
+   color: darkgray;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.8) brightness(50%) sepia(100%) saturate(10000%) hue-rotate(240deg);
+}
+
+header div span img.iconPesquisar {
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 450px;
+}
+
+header div span input.dataPicker {
+    outline: none;
+    margin-left: 6px;
+    margin-top: 10px;
+    border-style: none;
+    border-radius: 10px;
+    height: 25px;
+    width: 200px;
+    padding-left: 10px;
+    color: darkgray;
+}
+
+
+header div span.login {
+    margin-top: 10px;
+    float: right;
+}
+
+header div span img.avatar {
+    width: 25px;
+}
+
+header div span.filtrar img{
+    margin-top: 15px;
+    margin-left: 10px;
+    height: 20px;
+    position: absolute;
+}
+
+header div span img.menu {
+    width: 25px;
+}
+
+.divLateral{
+    position:relative;
+    width:450px;
+    float: left;
+    background-color: white;
+  }
+
+.divPrincipal{
+    position: relative;
+    width:750px;
+    left:0px;
+    float: left;
+  }
+
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+} 
+.group:after {
+  clear: both;
+}
+.group {
+   zoom: 1;
+}
