@@ -1,0 +1,63 @@
+html, body, *, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+header {
+    display: flex;
+    background-color: black;
+    padding: 20px;
+    /* justify-content: space-evenly; */
+    justify-content: space-between;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav li {
+    padding-left: 15px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ------- Galery -------- */
+
+.galery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.galery > div {
+    flex: 1 1 300px;
+    margin: 10px;
+}
+
+.galery p {
+    text-align: center;
+    margin-top: 10px;
+}

@@ -1,0 +1,35 @@
+body, ul, li, * {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    /* flex-direction: row; */
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    /* justify-content: space-between; */
+    /* justify-content: ; */
+    flex-direction: column-reverse;
+}
+
+main {
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* flex-flow: row wrap;
+    justify-content: space-around; */
+    align-items: center;
+    height: 300px;
+    border: 2px solid black;
+}
+
+div {
+    width: 200px;
+    height: 200px;
+    
+    /* border: 1px solid black; */
+}
+
+header ul li {
+    list-style: none;
+}
