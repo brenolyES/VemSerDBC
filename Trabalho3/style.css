@@ -125,14 +125,14 @@ header div span img.menu {
 
 .divLateral{
     position:relative;
-    width:450px;
+    width:550px;
     float: left;
     background-color: white;
   }
 
 .divPrincipal{
     position: relative;
-    width:750px;
+    width:650px;
     left:0px;
     float: left;
   }
@@ -147,4 +147,104 @@ header div span img.menu {
 }
 .group {
    zoom: 1;
+}
+
+.birthdays {
+    color: #1A75C1;
+    margin-top: 60px;
+    width: auto;
+    margin-left: 30px;
+}
+
+.birthdays .br {
+    margin-top: 8px;
+    margin-bottom: 18px;
+    width: 490px;
+}
+
+.birthday small {
+    font-weight: bold;
+}
+
+.birthdays h2, h4{
+    margin-left: 32px;
+    margin-bottom: 18px;
+}
+
+.hoje {
+    margin-left: 32px;
+    margin-bottom: 18px;
+}
+
+.lateralBirthday {
+    position: relative;
+    right:200px;
+    float: right;
+    margin-top: 10px;
+}
+
+.birthdays input[type=submit] {
+    all: unset;
+    background-color: #1A75C1;
+    color: white;
+    width: 130px;
+    height: 25px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid #1A75C1;
+    position: absolute;
+    margin-left: 180px;
+    margin-top: 0px;
+}
+
+.birthdays input[type=submit]:hover {
+    background-color: #ffffff;
+    color: #1A75C1;
+    border: 1px solid #1A75C1;
+}
+
+.birthdays input[type=text] {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    outline: none;
+    padding-left: 20px;
+    background-color: #ffffff;
+    width: 490px;
+    height: 25px;
+    border-radius: 20px;
+    border: 1px solid #9c9c9c;
+}
+
+.birthdays input[type=text]::placeholder {
+    color: rgb(163, 163, 163);
+    font-weight: bold;
+}
+
+.proximosBirthday {
+    text-align: center;
+}
+
+.proximosBirthday a {
+    all: unset;
+    background-color: #1A75C1;
+    color: white;
+    padding: 6px 20px;
+    border-radius: 5px;
+    border: 1px solid #1A75C1;
+}
+
+.proximosBirthday a:hover {
+    background-color: #ffffff;
+    color: #1A75C1;
+}
+
+.eventosImg {
+    width: 85%;
+    margin: 4px 10px 10px 24px;
+}
+
+.events h3 {
+    color: #1A75C1;
+    margin-left: 24px;
+    font-size: 25px;
 }
