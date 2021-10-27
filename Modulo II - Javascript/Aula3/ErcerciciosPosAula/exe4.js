@@ -3,7 +3,7 @@ var elementoUm = "ola";
 var elementoDois = 22;
 var elementoTres = "55";
 
-function adicinarLista(elementoQualquer){
+function adicionarLista(elementoQualquer){
  lista.push(elementoQualquer);
 }
 
@@ -13,9 +13,9 @@ function removerUltimoLista(){
 
 console.log(`lista vazia: ${lista}`);
 
-adicinarLista(elementoUm);
-adicinarLista(elementoDois);
-adicinarLista(elementoTres);
+adicionarLista(elementoUm);
+adicionarLista(elementoDois);
+adicionarLista(elementoTres);
 
 console.log(`adicionado elementos na lista: ${lista}`);
 

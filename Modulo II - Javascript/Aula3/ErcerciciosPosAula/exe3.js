@@ -3,7 +3,7 @@ var arrayDois = ['a', 'b', 'c', 'd'];
 
 function juntarArrays(arrayUm, arrayDois){
     let arrayUnidos = arrayUm.concat(arrayDois);
-    return console.log(arrayUnidos)
+    return console.log(arrayUnidos);
 }
 
 juntarArrays(arrayUm, arrayDois);
