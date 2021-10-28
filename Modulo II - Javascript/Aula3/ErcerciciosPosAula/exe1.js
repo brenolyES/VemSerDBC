@@ -1,13 +1,15 @@
-var caractere = "a";
-var array = ['c', 'a', 'texto', 'a'];
+var caractere = 'a';
+var array = ['c', 'a', 'a', 'a', 'texto', 'a', 'a'];
+var arrayNovo = [];
 
 function removerCaractere(caractere, array){
     for(let i = 0; i < array.length; i++){
-        if(array[i] === caractere){
-            array.splice(i, 1);
+        if(array[i] !== caractere){
+            arrayNovo.push(array[i]);
         }
     }
+    return array = arrayNovo;
 }
 
-removercaractere(caractere, array);
+array = removerCaractere(caractere, array);
 console.log(array);
