@@ -6,11 +6,14 @@ var texto = "javascript vai acabar nos deixando doidos";
 
 function convertePrimeiroCaractereMaiusculo(qualquerTexto) {
     var converteMinusculo = qualquerTexto.toLowerCase().split(" ");
+    var textoUnificado = "";
     for (var a = 0; a < converteMinusculo.length; a++) {
         var caractere = converteMinusculo[a];
         converteMinusculo[a] = caractere[0].toUpperCase() + caractere.slice(1);
+        textoUnificado += (converteMinusculo[a] + " ")
     }
-    return converteMinusculo.join(" ");
+    textoUnificado = textoUnificado.slice(0, -1);
+    return textoUnificado;
 }
 
 console.log(convertePrimeiroCaractereMaiusculo(texto));

@@ -7,6 +7,8 @@ var lista = [];
 
 function inverteNumero(qualquerNumero){
     numeroConvertido = qualquerNumero.toString();
+    var juntarLista;
+    var transformarEmNumero;
     for(let i = 0; i < numeroConvertido.length; i++){
         lista[i] = numeroConvertido[i];
     }
@@ -16,8 +18,11 @@ function inverteNumero(qualquerNumero){
         lista[i] = lista[lista.length-i-1]
         lista[lista.length-i-1] = aux;
     }
+    juntarLista = lista.join('');
+    transformarEmNumero = parseInt(juntarLista);
+    return transformarEmNumero;
 }
 
-inverteNumero(numero);
-console.log(numero);
-console.log(lista);
+console.log(`Numero normal: ${numero} ser tipo é ${typeof numero}`);
+console.log(`Numero Ivertido: ${inverteNumero(numero)} ser tipo é ${typeof numero}`);
+
