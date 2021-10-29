@@ -2,7 +2,7 @@ var listaDeProdutos = [];
 var id = 0;
 
 do{
-    
+
     var escolha = Number.parseInt(prompt("Escolha um opção:\n \n 1 - Para cadastrar um produto\n 2 - Excluir Produto\n 3 - Encontrar Produto\n 4 - Lista de produtos cadastrados\n 5 - Sair"));
 
     if((typeof escolha === "number" && escolha.toString() !== "NaN") 
@@ -19,7 +19,6 @@ do{
                 } 
 
                 cadastrarProduto();
-                listaDeProdutos.forEach(elemento => console.log(elemento));
 
                 break;
 
@@ -32,7 +31,6 @@ do{
                 }
 
                 listaDeProdutos = excluirProdutos(listaDeProdutos);
-                listaDeProdutos.forEach(elemento => console.log(elemento));
 
                 break;
 
