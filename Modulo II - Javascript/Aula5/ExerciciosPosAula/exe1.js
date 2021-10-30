@@ -22,6 +22,10 @@ var encontrarProduto = (lista) => {
 
 var listarTodosProdutos = lista => lista.forEach(elemento => console.log(elemento));
 
+var somarValorProdutos = listaDeProdutos.reduce((valorAnterior, valorAtual) => {
+    return valorAnterior + valorAtual.valor;
+}, 0);
+
 do{
     var escolhaString = prompt("Escolha um opção:\n \n 1 - Para cadastrar um produto\n 2 - Excluir Produto\n 3 - Encontrar Produto\n 4 - Lista de produtos cadastrados\n 5 - Sair");
     var escolha = Number.parseInt(escolhaString);
@@ -42,8 +46,9 @@ do{
                 console.log(encontrarProduto(listaDeProdutos));
                 break;
                 
-            case 4:          
+            case 4:       
                 listarTodosProdutos(listaDeProdutos);
+                console.log(somarValorProdutos);
                 break;
         }
     } else {alert("opção invalida")};
