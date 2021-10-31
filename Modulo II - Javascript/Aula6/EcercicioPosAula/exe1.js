@@ -60,15 +60,58 @@ class Validacoes {
 
 // -----------------------------------Main do codigo-----------------------------------
 
+var idColaborador = 0;
+var idProjeto = 0;
 
-const colaborador = new Colaborador();
-const marcacao = new Marcacao();
-const projeto = new Projeto();
+var listaColaborador = [];
+var listaProjeto = [];
+
+var addColaborador = (lista) => {
+    var nome = prompt("Nome: ");
+    idColaborador += 1;
+    lista.push(new Colaborador(idColaborador, nome));
+}
+
+var addProjeto = (lista) => {
+    var titulo = prompt("Titulo do projeto: ");
+    idProjeto += 1;
+    lista.push(new Projeto(idProjeto, titulo));
+}
+
+var addColaboradorAProjeto = (listaUm, listaDois) => {
+    var escolhaColaborador = Number.parseInt(prompt("Digite o codigo do colaborador: "));
+    var validarIdColaborador = listaDois.find(id => id.idColaborador === escolhaColaborador);
+    var escolhaProjeto = Number.parseInt(prompt("Digite o codigo do projeto: "));
+    var validarIdProjeto = listaUm.find(id => id.idProjeto === escolhaProjeto);
+    
+    if (validarIdColaborador !== undefined) {
+        if (validarIdProjeto !== undefined) {
+            
+            var confirmar = confirm(`Tem certeza que deseja alocar ${validarIdColaborador.nome} ao projeto ${validarIdProjeto.titulo} ?`);
+            
+            switch(confirmar){
+
+                case true:
+                    console.log("aqui vai fazer algo");
+                    break;
+                case false:
+                    console.log("aqui nao ira fazer nada");
+                    break;
+            }
+
+        } else {
+            console.log("Não existe projeto cadastrado com o id passado.")
+        }
+    } else {
+        console.log("Não existe colaborador cadastrado com o id passado.")
+    }
+}
+
 
 var escolha = 1;
 while(escolha !== 9){
 
-    var escolhaString = prompt("Escolha um opção:\n \n 1 - Cadastrar Colaborador;\n 2 - Cadastrar Projeto;\n 3 - Alocar Colaborador;\n 4 - Desalocar Colaborador; 5 - Marcar Ponto;\n 6 - Ver Lista de Colaboradores Sem Projeto;\n 7 - Ver Lista de Projetos Sem Colaboradores;\n 8 - Ver Lista de Colaboradores Que Ainda Não Marcaram o Ponto;\n 9 - Encerrar Execução do Sistema;");
+    var escolhaString = prompt("Escolha um opção:\n \n 1 - Cadastrar Colaborador;\n 2 - Cadastrar Projeto;\n 3 - Alocar Colaborador a um projeto;\n 4 - Desalocar Colaborador; 5 - Marcar Ponto;\n 6 - Ver Lista de Colaboradores Sem Projeto;\n 7 - Ver Lista de Projetos Sem Colaboradores;\n 8 - Ver Lista de Colaboradores Que Ainda Não Marcaram o Ponto;\n 9 - Encerrar Execução do Sistema;");
 
     var escolha = Number.parseInt(escolhaString);
     
@@ -78,14 +121,19 @@ while(escolha !== 9){
 
             case 1:
                 
+                addColaborador(listaColaborador);
+                // console.log(listaColaborador);
                 break;
 
             case 2:
-                alert("2");
+                
+                addProjeto(listaProjeto);
+                // console.log(listaProjeto);
                 break;
 
             case 3:
-                alert("3");
+                
+                addColaboradorAProjeto(listaProjeto, listaColaborador);
                 break;
 
             case 4:
@@ -109,13 +157,15 @@ while(escolha !== 9){
                 break;
 
             case 9:
-                alert("Sistema Encerrado")
+                console.log("Sistema Encerrado!")
                 break;
 
-            default: 
-                alert("Escolha um número valido!")
+            default:
+                console.log("Escolha um número dentre as opções mostradas!") 
         } 
-    } 
+    } else {
+        console.log("Você precisa digitar um numero!")
+    }
 }
 
 
