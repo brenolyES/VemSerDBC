@@ -63,6 +63,7 @@ var idProjeto = 0;
 
 var listaColaborador = [];
 var listaProjeto = [];
+var listaMarcacao = [];
 
 var addColaborador = (lista) => {
     var nome = prompt("Nome: ");
@@ -103,9 +104,13 @@ var desalocarColaboradorDeUmProjeto = (listaProjeto, listaColaborador) => {
             ProjetoADesalocar.colaboradoresAlocados = ProjetoADesalocar.colaboradoresAlocados.filter(elemento => elemento.idColaborador !== colaboradorADesalocar.idColaborador);
         }else {console.log("Esse colaborador não esta em nenhum projeto cadastrado.")}
     }else {console.log("Não existe colaborador cadastrado com o id passado.")}
-
 }
 
+var marcarPonto = (lista) => {
+    var dia = Number.parseInt(prompt("Digite o dia: "));
+    var horas = Number.parseInt(prompt("Digite a hora: "));
+    lista.push(new Marcacao(dia, horas));
+}
 
 var escolha = 1;
 while(escolha !== 9){
@@ -135,7 +140,8 @@ while(escolha !== 9){
                 break;
 
             case 5:
-                alert("5");
+                marcarPonto(listaMarcacao);
+                console.log(listaMarcacao);
                 break;
 
             case 6:
