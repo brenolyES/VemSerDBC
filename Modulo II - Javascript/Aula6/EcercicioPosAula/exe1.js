@@ -66,46 +66,51 @@ var listaProjeto = [];
 
 var addColaborador = (lista) => {
     var nome = prompt("Nome: ");
-    idColaborador += 1;
-    lista.push(new Colaborador(idColaborador, nome));
+    if(new Validacoes().validaString(nome) === true){
+        idColaborador += 1;
+        lista.push(new Colaborador(idColaborador, nome));
+    }else {alert("Digite um nome válido!")}
 }
 
 var addProjeto = (lista) => {
     var titulo = prompt("Titulo do projeto: ");
-    idProjeto += 1;
-    lista.push(new Projeto(idProjeto, titulo));
+    if(new Validacoes.validaString(titulo) === true){
+        idProjeto += 1;
+        lista.push(new Projeto(idProjeto, titulo));
+    }else {alert("Digite um nome válido!")}
 }
+
 var addColaboradorAProjeto = (listaProjeto, listaColaborador) => {
     var idColaboradorEscolhido = Number.parseInt(prompt("Digite o codigo do colaborador: "));
     var idProjetoEscolhido = Number.parseInt(prompt("Digite o codigo do projeto: "));
     var projetoEncontrado = listaProjeto.find(elemento => elemento.idProjeto == idProjetoEscolhido);
     var colaboradorEncontrado = listaColaborador.find(elemento => elemento.idColaborador == idColaboradorEscolhido);
-    
     if (colaboradorEncontrado !== undefined) {
         if (projetoEncontrado !== undefined) {
-            var confirmar = confirm(`Tem certeza que deseja alocar ${colaboradorEncontrado.nome} ao projeto ${projetoEncontrado.titulo} ?`);
-            switch(confirmar){
-                case true:
-                    projetoEncontrado.colaboradoresAlocados.push(colaboradorEncontrado);
-                    colaboradorEncontrado.idProjeto = idProjetoEscolhido;
-                    break;
-                case false:
-                    console.log("aqui nao ira fazer nada");
-                    break;
-            }
-        } else {
-            console.log("Não existe projeto cadastrado com o id passado.")
-        }
-    } else {
-        console.log("Não existe colaborador cadastrado com o id passado.")
-    }
+            projetoEncontrado.colaboradoresAlocados.push(colaboradorEncontrado);
+            colaboradorEncontrado.idProjeto = idProjetoEscolhido;   
+        } else {console.log("Não existe projeto cadastrado com o id passado.")}
+    } else {console.log("Não existe colaborador cadastrado com o id passado.")}
+}
+
+var desalocarColaboradorDeUmProjeto = (listaProjeto, listaColaborador) => {
+    var idColaboradorADesalocar = Number.parseInt(prompt("Digite o codigo do colaborador que deseja desalocar: "));
+    var colaboradorADesalocar = listaColaborador.find(elemento => elemento.idColaborador === idColaboradorADesalocar);
+    if(colaboradorADesalocar !== undefined){
+        var ProjetoADesalocar = listaProjeto.find(elemento => elemento.idProjeto === colaboradorADesalocar.idColaborador);
+        if(colaboradorADesalocar.idProjeto !== undefined){
+            colaboradorADesalocar.idProjeto = undefined;
+            ProjetoADesalocar.colaboradoresAlocados = ProjetoADesalocar.colaboradoresAlocados.filter(elemento => elemento.idColaborador !== colaboradorADesalocar.idColaborador);
+        }else {console.log("Esse colaborador não esta em nenhum projeto cadastrado.")}
+    }else {console.log("Não existe colaborador cadastrado com o id passado.")}
+
 }
 
 
 var escolha = 1;
 while(escolha !== 9){
 
-    var escolhaString = prompt("Escolha um opção:\n \n 1 - Cadastrar Colaborador;\n 2 - Cadastrar Projeto;\n 3 - Alocar Colaborador a um projeto;\n 4 - Desalocar Colaborador; 5 - Marcar Ponto;\n 6 - Ver Lista de Colaboradores Sem Projeto;\n 7 - Ver Lista de Projetos Sem Colaboradores;\n 8 - Ver Lista de Colaboradores Que Ainda Não Marcaram o Ponto;\n 9 - Encerrar Execução do Sistema;");
+    var escolhaString = prompt("Escolha um opção:\n \n 1 - Cadastrar Colaborador;\n 2 - Cadastrar Projeto;\n 3 - Alocar Colaborador a um projeto;\n 4 - Desalocar Colaborador;\n 5 - Marcar Ponto;\n 6 - Ver Lista de Colaboradores Sem Projeto;\n 7 - Ver Lista de Projetos Sem Colaboradores;\n 8 - Ver Lista de Colaboradores Que Ainda Não Marcaram o Ponto;\n 9 - Encerrar Execução do Sistema;");
 
     var escolha = Number.parseInt(escolhaString);
     
@@ -126,7 +131,7 @@ while(escolha !== 9){
                 break;
 
             case 4:
-                alert("4");
+                desalocarColaboradorDeUmProjeto(listaProjeto, listaColaborador);
                 break;
 
             case 5:
