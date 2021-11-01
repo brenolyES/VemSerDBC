@@ -21,7 +21,9 @@ class Colaborador {
         this.idProjeto = idProjetoParametro;
     }
 
-    marcarPonto(dia, hora){}
+    marcarPonto(dia, hora){
+        this.marcacoesPonto.push(new Marcacao(dia, hora));
+    }
 }
 
 class Projeto {
@@ -63,22 +65,17 @@ var idProjeto = 0;
 
 var listaColaborador = [];
 var listaProjeto = [];
-var listaMarcacao = [];
 
 var addColaborador = (lista) => {
     var nome = prompt("Nome: ");
-    if(new Validacoes().validaString(nome) === true){
-        idColaborador += 1;
-        lista.push(new Colaborador(idColaborador, nome));
-    }else {alert("Digite um nome válido!")}
+    idColaborador += 1;
+    lista.push(new Colaborador(idColaborador, nome));
 }
 
 var addProjeto = (lista) => {
     var titulo = prompt("Titulo do projeto: ");
-    if(new Validacoes.validaString(titulo) === true){
-        idProjeto += 1;
-        lista.push(new Projeto(idProjeto, titulo));
-    }else {alert("Digite um nome válido!")}
+    idProjeto += 1;
+    lista.push(new Projeto(idProjeto, titulo));
 }
 
 var addColaboradorAProjeto = (listaProjeto, listaColaborador) => {
@@ -106,10 +103,26 @@ var desalocarColaboradorDeUmProjeto = (listaProjeto, listaColaborador) => {
     }else {console.log("Não existe colaborador cadastrado com o id passado.")}
 }
 
-var marcarPonto = (lista) => {
-    var dia = Number.parseInt(prompt("Digite o dia: "));
-    var horas = Number.parseInt(prompt("Digite a hora: "));
-    lista.push(new Marcacao(dia, horas));
+var marcarPonto = (listaColaborador) => {
+    var idColaboradorAMarcarOPonto = Number.parseInt(prompt("Digite o codigo do colaborador ao qual voce quer marcar o ponto: "));
+    var colaboradorAMarcarOPonto = listaColaborador.find(elemento => elemento.idColaborador === idColaboradorAMarcarOPonto);
+    if(colaboradorAMarcarOPonto !== undefined){
+        var dia = Number.parseInt(prompt("Digite o dia: "));
+        var horas = Number.parseInt(prompt("Digite a hora: "));
+        colaboradorAMarcarOPonto.marcarPonto(dia, horas);
+    }else {console.log("Não existe colaborador cadastrado com o id passado.")}
+}
+
+var colaboradorSemProjeto = () => {
+
+}
+
+var projetoSemColaborador = () => {
+
+}
+
+var colaboradorSemMarcacaoDePonto = () => {
+
 }
 
 var escolha = 1;
@@ -140,8 +153,7 @@ while(escolha !== 9){
                 break;
 
             case 5:
-                marcarPonto(listaMarcacao);
-                console.log(listaMarcacao);
+                marcarPonto(listaColaborador);
                 break;
 
             case 6:
