@@ -113,16 +113,19 @@ var marcarPonto = (listaColaborador) => {
     }else {console.log("Não existe colaborador cadastrado com o id passado.")}
 }
 
-var colaboradorSemProjeto = () => {
-
+var colaboradorSemProjeto = (listaColaborador) => {
+    var colaboradorSemProjeto = listaColaborador.filter(elemento => elemento.idProjeto === undefined);
+    return colaboradorSemProjeto;
 }
 
-var projetoSemColaborador = () => {
-
+var projetoSemColaborador = (listaProjeto) => {
+    var projetoSemColaborador = listaProjeto.filter(elemento => elemento.colaboradoresAlocados.length === 0);
+    return projetoSemColaborador;
 }
 
-var colaboradorSemMarcacaoDePonto = () => {
-
+var colaboradorSemMarcacaoDePonto = (listaColaborador) => {
+    var colaboradorSemMarcacaoDePonto = listaColaborador.filter(elemento => elemento.marcacoesPonto.length === 0);
+    return colaboradorSemMarcacaoDePonto;
 }
 
 var escolha = 1;
@@ -157,15 +160,15 @@ while(escolha !== 9){
                 break;
 
             case 6:
-                alert("6");
+                console.log(colaboradorSemProjeto(listaColaborador));
                 break;
 
             case 7:
-                alert("7");
+                console.log(projetoSemColaborador(listaProjeto));
                 break;
 
             case 8:
-                alert("8");
+                console.log(colaboradorSemMarcacaoDePonto(listaColaborador));
                 break;
 
             case 9:
