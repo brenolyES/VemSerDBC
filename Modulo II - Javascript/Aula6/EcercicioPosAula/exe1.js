@@ -75,40 +75,31 @@ var addProjeto = (lista) => {
     idProjeto += 1;
     lista.push(new Projeto(idProjeto, titulo));
 }
-// var addColaboradorAProjeto = (listaProjeto, listaColaborador) => {
-//     var idColaboradorEscolhido = Number.parseInt(prompt("Digite o codigo do colaborador: "));
-//     var colaboradorEncontrado = listaColaborador.find(elemento => elemento.idColaborador === idColaboradorEscolhido);
-//     console.log(colaboradorEncontrado);
-//     var idProjetoEscolhido = Number.parseInt(prompt("Digite o codigo do projeto: "));
-//     var projetoEncontrado = listaProjeto.find(elemento => elemento.idProjeto === idProjetoEscolhido);
-//     console.log(projetoEncontrado);
+var addColaboradorAProjeto = (listaProjeto, listaColaborador) => {
+    var idColaboradorEscolhido = Number.parseInt(prompt("Digite o codigo do colaborador: "));
+    var idProjetoEscolhido = Number.parseInt(prompt("Digite o codigo do projeto: "));
+    var projetoEncontrado = listaProjeto.find(elemento => elemento.idProjeto == idProjetoEscolhido);
+    var colaboradorEncontrado = listaColaborador.find(elemento => elemento.idColaborador == idColaboradorEscolhido);
     
-//     if (colaboradorEncontrado !== undefined) {
-//         if (projetoEncontrado !== undefined) {
-            
-//             var confirmar = confirm(`Tem certeza que deseja alocar ${colaboradorEncontrado.nome} ao projeto ${projetoEncontrado.titulo} ?`);
-            
-//             switch(confirmar){
-
-//                 case true:
-//                     var novaListaProjeto = listaProjeto.find(elemento => elemento.idProjeto == idProjetoEscolhido);
-//                     var novaListaColaborador = listaColaborador.find(elemento => elemento.idColaborador == idColaboradorEscolhido);
-//                     novaListaProjeto.colaboradoresAlocados.push(novaListaColaborador);
-//                     novaListaColaborador.idProjeto = idProjetoEscolhido;
-
-//                     break;
-//                 case false:
-//                     console.log("aqui nao ira fazer nada");
-//                     break;
-//             }
-
-//         } else {
-//             console.log("Não existe projeto cadastrado com o id passado.")
-//         }
-//     } else {
-//         console.log("Não existe colaborador cadastrado com o id passado.")
-//     }
-// }
+    if (colaboradorEncontrado !== undefined) {
+        if (projetoEncontrado !== undefined) {
+            var confirmar = confirm(`Tem certeza que deseja alocar ${colaboradorEncontrado.nome} ao projeto ${projetoEncontrado.titulo} ?`);
+            switch(confirmar){
+                case true:
+                    projetoEncontrado.colaboradoresAlocados.push(colaboradorEncontrado);
+                    colaboradorEncontrado.idProjeto = idProjetoEscolhido;
+                    break;
+                case false:
+                    console.log("aqui nao ira fazer nada");
+                    break;
+            }
+        } else {
+            console.log("Não existe projeto cadastrado com o id passado.")
+        }
+    } else {
+        console.log("Não existe colaborador cadastrado com o id passado.")
+    }
+}
 
 
 var escolha = 1;
@@ -123,29 +114,15 @@ while(escolha !== 9){
         switch(escolha){
 
             case 1:
-                
                 addColaborador(listaColaborador);
-                // console.log(listaColaborador);
                 break;
 
             case 2:
-                
                 addProjeto(listaProjeto);
-                // console.log(listaProjeto);
                 break;
 
             case 3:
-                var idColaboradorEscolhido = Number.parseInt(prompt("Digite o codigo do colaborador: "));
-                var idProjetoEscolhido = Number.parseInt(prompt("Digite o codigo do projeto: "));
-               
-                var novaListaProjeto = listaProjeto.find(elemento => elemento.idProjeto == idProjetoEscolhido);
-                console.log(novaListaProjeto)
-                var novaListaColaborador = listaColaborador.find(elemento => elemento.idColaborador == idColaboradorEscolhido);
-                console.log(novaListaColaborador)
-                listaProjeto.colaboradoresAlocados.push(novaListaColaborador);
-                console.log(listaProjeto.colaboradoresAlocados)
-                // listaProjeto.colaboradoresAlocados.push(novaListaColaborador);
-                // novaListaColaborador.idProjeto = idProjetoEscolhido;
+                addColaboradorAProjeto(listaProjeto, listaColaborador);
                 break;
 
             case 4:
