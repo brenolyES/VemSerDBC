@@ -15,11 +15,10 @@ class Colaborador {
     idProjeto = 0;
     marcacoesPonto = [];
 
-    constructor (idColaboradorParametro, nomeParametro, idProjetoParametro, marcacoesPontoParametro){
+    constructor (idColaboradorParametro, nomeParametro, idProjetoParametro){
         this.idColaborador = idColaboradorParametro;
         this.nome = nomeParametro;
         this.idProjeto = idProjetoParametro;
-        this.marcacoesPonto = marcacoesPontoParametro;
     }
 
     marcarPonto(dia, hora){}
@@ -28,12 +27,11 @@ class Colaborador {
 class Projeto {
     idProjeto = 0;
     titulo = "";
-    ColaboradoresAlocados = []
+    colaboradoresAlocados = [];
 
-    constructor (idProjetoParametro, tituloParametro, ColaboradoresAlocadosParametro){
+    constructor (idProjetoParametro, tituloParametro){
         this.idProjeto = idProjetoParametro;
         this.titulo = tituloParametro;
-        this.ColaboradoresAlocados = ColaboradoresAlocadosParametro;
     }
 }
 
@@ -77,35 +75,40 @@ var addProjeto = (lista) => {
     idProjeto += 1;
     lista.push(new Projeto(idProjeto, titulo));
 }
-
-var addColaboradorAProjeto = (listaUm, listaDois) => {
-    var escolhaColaborador = Number.parseInt(prompt("Digite o codigo do colaborador: "));
-    var validarIdColaborador = listaDois.find(id => id.idColaborador === escolhaColaborador);
-    var escolhaProjeto = Number.parseInt(prompt("Digite o codigo do projeto: "));
-    var validarIdProjeto = listaUm.find(id => id.idProjeto === escolhaProjeto);
+// var addColaboradorAProjeto = (listaProjeto, listaColaborador) => {
+//     var idColaboradorEscolhido = Number.parseInt(prompt("Digite o codigo do colaborador: "));
+//     var colaboradorEncontrado = listaColaborador.find(elemento => elemento.idColaborador === idColaboradorEscolhido);
+//     console.log(colaboradorEncontrado);
+//     var idProjetoEscolhido = Number.parseInt(prompt("Digite o codigo do projeto: "));
+//     var projetoEncontrado = listaProjeto.find(elemento => elemento.idProjeto === idProjetoEscolhido);
+//     console.log(projetoEncontrado);
     
-    if (validarIdColaborador !== undefined) {
-        if (validarIdProjeto !== undefined) {
+//     if (colaboradorEncontrado !== undefined) {
+//         if (projetoEncontrado !== undefined) {
             
-            var confirmar = confirm(`Tem certeza que deseja alocar ${validarIdColaborador.nome} ao projeto ${validarIdProjeto.titulo} ?`);
+//             var confirmar = confirm(`Tem certeza que deseja alocar ${colaboradorEncontrado.nome} ao projeto ${projetoEncontrado.titulo} ?`);
             
-            switch(confirmar){
+//             switch(confirmar){
 
-                case true:
-                    console.log("aqui vai fazer algo");
-                    break;
-                case false:
-                    console.log("aqui nao ira fazer nada");
-                    break;
-            }
+//                 case true:
+//                     var novaListaProjeto = listaProjeto.find(elemento => elemento.idProjeto == idProjetoEscolhido);
+//                     var novaListaColaborador = listaColaborador.find(elemento => elemento.idColaborador == idColaboradorEscolhido);
+//                     novaListaProjeto.colaboradoresAlocados.push(novaListaColaborador);
+//                     novaListaColaborador.idProjeto = idProjetoEscolhido;
 
-        } else {
-            console.log("Não existe projeto cadastrado com o id passado.")
-        }
-    } else {
-        console.log("Não existe colaborador cadastrado com o id passado.")
-    }
-}
+//                     break;
+//                 case false:
+//                     console.log("aqui nao ira fazer nada");
+//                     break;
+//             }
+
+//         } else {
+//             console.log("Não existe projeto cadastrado com o id passado.")
+//         }
+//     } else {
+//         console.log("Não existe colaborador cadastrado com o id passado.")
+//     }
+// }
 
 
 var escolha = 1;
@@ -132,8 +135,17 @@ while(escolha !== 9){
                 break;
 
             case 3:
-                
-                addColaboradorAProjeto(listaProjeto, listaColaborador);
+                var idColaboradorEscolhido = Number.parseInt(prompt("Digite o codigo do colaborador: "));
+                var idProjetoEscolhido = Number.parseInt(prompt("Digite o codigo do projeto: "));
+               
+                var novaListaProjeto = listaProjeto.find(elemento => elemento.idProjeto == idProjetoEscolhido);
+                console.log(novaListaProjeto)
+                var novaListaColaborador = listaColaborador.find(elemento => elemento.idColaborador == idColaboradorEscolhido);
+                console.log(novaListaColaborador)
+                listaProjeto.colaboradoresAlocados.push(novaListaColaborador);
+                console.log(listaProjeto.colaboradoresAlocados)
+                // listaProjeto.colaboradoresAlocados.push(novaListaColaborador);
+                // novaListaColaborador.idProjeto = idProjetoEscolhido;
                 break;
 
             case 4:
@@ -167,11 +179,3 @@ while(escolha !== 9){
         console.log("Você precisa digitar um numero!")
     }
 }
-
-
-
-
-
-
-
-
