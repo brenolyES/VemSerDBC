@@ -8,9 +8,9 @@ let pontuaçãoO = 0;
 var a, b, c, d, e, f, g, h, j;
 let botao = document.getElementById('iniciarEReiniciar');
 let copiaBotao = botao;
-let tituloJogo = document.getElementById('tituloJogo');
 let ganhou = '';
 let quemGanhou;
+let rodadas = 0;
 
 let resetarJogadas = () =>{
     for(let i=0; i < casas.length; i++){
@@ -119,6 +119,7 @@ let colocarXouO = () => {
                         document.getElementById('jogadorO').style.backgroundColor = '#CCC';
                         jogadorVez = jogadorO; 
                         vitoria();
+                        rodadas += 1;
                     } else if (casas[i].innerText === '' && jogadorVez === jogadorO) { 
                         casas[i].innerText = "O";
                         casas[i].style.color = 'blue';
@@ -126,7 +127,8 @@ let colocarXouO = () => {
                         document.getElementById('jogadorX').style.backgroundColor = '#CCC';
                         jogadorVez = jogadorX;
                         vitoria();
-                    } else {console.log("campo ja foi jogado");} 
+                        rodadas += 1;
+                    } else {};
                 }
                 if(ganhou === "ganhou"){
                     let ganhador = casas[i].innerText;
@@ -140,8 +142,8 @@ let colocarXouO = () => {
                         document.getElementById('pontuacaoO').innerText = pontuaçãoO;
                     }
                     ganhou = '';
-                    
                 }
+                
             }
               
         )
