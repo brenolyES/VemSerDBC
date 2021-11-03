@@ -5,7 +5,7 @@ const jogadorO = "O";
 let jogadorVez = jogadorX;
 let pontuaçãoX = 0;
 let pontuaçãoO = 0;
-var a, b, c;
+var a, b, c, d, e, f, g, h, j;
 let botao = document.getElementById('iniciarEReiniciar');
 let copiaBotao = botao;
 let tituloJogo = document.getElementById('tituloJogo');
@@ -24,52 +24,82 @@ let mudarEstiloComVitoria = () => {
     casas[a].style.color='white'; casas[b].style.color='white'; casas[c].style.color='white';
 }
 
+let preencherCasas = () => {
+    casas[d].innerText = '-'; casas[e].innerText = '-'; casas[f].innerText = '-'; casas[g].innerText = '-'; casas[h].innerText = '-'; casas[j].innerText = '-';
+    casas[d].style.color = 'black'; casas[e].style.color = 'black'; casas[f].style.color = 'black'; casas[g].style.color = 'black'; casas[h].style.color = 'black'; casas[j].style.color = 'black';
+}
+
 let vitoria = () => {
     if((casas[0].innerText === casas[1].innerText) && (casas[1].innerText === casas[2].innerText) && (casas[2].innerText != '')) {
 		a = 0; b = 1; c = 2;
+        d = 3; e = 4; f= 5;
+        g = 6; h = 7; j= 8;
+        preencherCasas();
         mudarEstiloComVitoria();
         quemGanhou = casas[0];
         ganhou = 'ganhou';
+        
         return;
 	}else if((casas[3].innerText === casas[4].innerText) && (casas[4].innerText === casas[5].innerText) && (casas[5].innerText != '')) {
 		a = 3; b = 4; c = 5;
+        d = 0; e = 1; f= 2;
+        g = 6; h = 7; j= 8;
+        preencherCasas();
         mudarEstiloComVitoria();
         quemGanhou = casas[3];
         ganhou = 'ganhou';
         return;
 	} else if((casas[6].innerText === casas[7].innerText) && (casas[7].innerText === casas[8].innerText) && (casas[8].innerText != '')) {
 		a = 6; b = 7; c = 8;
+        d = 0; e = 1; f= 2;
+        g = 3; h = 4; j= 5;
+        preencherCasas();
         mudarEstiloComVitoria();
         quemGanhou = casas[6];
         ganhou = 'ganhou';
         return;
 	}else if((casas[0].innerText === casas[3].innerText) && (casas[3].innerText === casas[6].innerText) && (casas[6].innerText != '')) {
 		a = 0; b = 3; c = 6;
+        d = 2; e = 4; f= 5;
+        g = 1; h = 7; j= 8;
         mudarEstiloComVitoria();
+        preencherCasas();
         quemGanhou = casas[0];
         ganhou = 'ganhou';
         return;
 	}else if((casas[1].innerText === casas[4].innerText) && (casas[4].innerText === casas[7].innerText) && (casas[7].innerText != '')) {
 		a = 1; b = 4; c = 7;
+        d = 0; e = 2; f= 3;
+        g = 5; h = 6; j= 8;
         mudarEstiloComVitoria();
+        preencherCasas();
         quemGanhou = casas[1];
         ganhou = 'ganhou';
         return;
 	}else if((casas[2].innerText === casas[5].innerText) && (casas[5].innerText === casas[8].innerText) && (casas[8].innerText != '')) {
 		a = 2; b = 5; c = 8;
+        d = 0; e = 1; f= 3;
+        g = 4; h = 6; j= 7;
         mudarEstiloComVitoria();
+        preencherCasas();
         quemGanhou = casas[2];
         ganhou = 'ganhou';
         return;
 	}else if((casas[0].innerText === casas[4].innerText) && (casas[4].innerText === casas[8].innerText) && (casas[8].innerText != '')) {
 		a = 0; b = 4; c = 8;
+        d = 1; e = 2; f= 3;
+        g = 5; h = 6; j= 7;
         mudarEstiloComVitoria();
+        preencherCasas();
         quemGanhou = casas[0];
         ganhou = 'ganhou';
         return;
 	}else if((casas[2].innerText === casas[4].innerText) && (casas[4].innerText === casas[6].innerText) && (casas[6].innerText != '')) {
 		a = 2; b = 4; c = 6;
+        d = 0; e = 1; f= 3;
+        g = 5; h = 7; j= 8;
         mudarEstiloComVitoria();
+        preencherCasas();
         quemGanhou = casas[2];
         ganhou = 'ganhou';
         return;
@@ -110,7 +140,7 @@ let colocarXouO = () => {
                         document.getElementById('pontuacaoO').innerText = pontuaçãoO;
                     }
                     ganhou = '';
-                    resetarJogadas();
+                    
                 }
             }
               
@@ -128,19 +158,11 @@ let iniciar = () => {
         document.getElementById('informacoes').removeChild(botao);
         document.getElementById('jogadorX').style.backgroundColor = '#CCC';
         document.getElementById('jogadorO').style.backgroundColor = 'white';
-        if(ganhou == 'ganhou'){
-            document.getElementById('informacoes').appendChild(copiaBotao);
-            console.log('ta caindo aqui')
-            copiaBotao.innerText = "Reiniciar";
-            copiaBotao.addEventListener('click', resetarJogadas());
-        }
-        
+        document.getElementById('informacoes').appendChild(copiaBotao);
+        copiaBotao.innerText = "Jogar Novamente";
+        copiaBotao.addEventListener('click', resetarJogadas());
     })
     
 }
 
 iniciar();
-
-if(ganhou === "ganhou"){
-    console.log('ta caindo aqui')
-}
