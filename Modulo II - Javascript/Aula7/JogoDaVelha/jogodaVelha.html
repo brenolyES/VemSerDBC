@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pr-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+
+    <link rel="stylesheet" href="./font-sizes.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <div id="div-principal" class="container">
+        <h1 id="tituloJogo" class="text-center mt-4">Jogo da Velha</h1>
+            <div  id="tabuleiro-jogo" class="d-flex flex-column align-items-center mt-3">
+                <div class="row">
+                    <div id="casa-um" class="casa border-end border-bottom border-dark border-3 d-flex justify-content-center align-items-center fs-50"></div>
+
+                    <div id="casa-dois" class="casa border-end border-start border-bottom border-dark border-3 d-flex justify-content-center align-items-center fs-50"></div>
+
+                    <div id="casa-tres" class="casa border-start border-bottom border-dark border-3 d-flex justify-content-center align-items-center fs-50"></div>
+                </div>
+                <div class="row">
+                    <div id="casa-quatro" class="casa border-end border-bottom border-top border-dark border-3 d-flex justify-content-center align-items-center fs-50"></div>
+
+                    <div id="casa-cinco" class="casa border border-dark border-3 d-flex justify-content-center align-items-center fs-50"></div>
+
+                    <div id="casa-seis" class="casa border-bottom border-top border-start border-dark border-3 d-flex justify-content-center align-items-center fs-50"></div>
+                </div>
+                <div class="row">
+                    <div id="casa-sete" class="casa border-end border-top border-dark border-3 d-flex justify-content-center align-items-center fs-50"></div>
+
+                    <div id="casa-oito" class="casa border-end border-start border-top border-dark border-3 d-flex justify-content-center align-items-center fs-50"></div>
+
+                    <div id="casa-nove" class="casa border-start border-top border-dark border-3 d-flex justify-content-center align-items-center fs-50"></div>
+                </div>
+            </div>
+        <div id="informacoes" class="text-center">
+            <div id="paiDaDivVezDoJogador" class="mt-4">
+                <span id="jogadorX" class="me-4 text-danger">Jogador X</span>
+                <span id="jogadorO" class="text-primary">Jogador O</span>
+            </div>
+            <button id="iniciarEReiniciar" type="button" class="btn btn-dark mt-3">Iniciar</button>
+        </div>
+    </div>
+    <script src="./jogoDaVelha.js"></script>
+</body>
+
+</html>

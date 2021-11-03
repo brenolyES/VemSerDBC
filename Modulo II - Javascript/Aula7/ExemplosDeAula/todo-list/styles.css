@@ -1,0 +1,49 @@
+ul {
+    list-style: none;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.my-btn-add {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px !important;
+    height: 30px !important;
+    outline: none !important;
+}
+
+.my-btn-add :active {
+    color: #222288 !important;
+    font-size: 24px;
+}
+
+.my-btn-delete {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 20px !important;
+    height: 20px !important;
+    outline: none !important;
+}
+
+.my-btn-delete :active {
+    color: #000 !important;
+    font-size: 16px;
+}
+
+.my-btn-check {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 20px !important;
+    height: 20px !important;
+    outline: none !important;
+}
+
+.my-btn-check :active {
+    color: #000 !important;
+    font-size: 16px;
+}
