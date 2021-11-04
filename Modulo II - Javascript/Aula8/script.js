@@ -71,7 +71,9 @@ const validarSenha = () => { // deve retornar um boolean (true = válido, false 
         ehValido = false;
     }
 
+
     ehValido = possuiOitoCaracteres && possuiCharEspecial && possuiNumero && possuiLetraMaiuscula && possuiLetraMinuscula && !naoPossuiEspacos;
+
 
     if(!ehValido && senhaDigitada !== '') {
         document.getElementById('password-registration-error').innerText = "Senha inválida"
@@ -81,6 +83,7 @@ const validarSenha = () => { // deve retornar um boolean (true = válido, false 
         document.getElementById('password-registration-error').className = "d-none"
     }
 
+    
     return ehValido;
 }
 
@@ -89,15 +92,30 @@ const validarData = () => {
     /* 
         1 - deve ser uma data válida;
         2 - não pode ser uma data futura;
-        3 - deve ser uma data de no mínimo 18 anos atrás; (idade > 18)
     */
 
 
     //variaveis a ser utilizadas;    
     let ehValido = true;
+    let dataDeHoje = moment();
     let inputData = document.getElementById('date-input-registration');
     let dataDigitada = inputData.value;
     let dataConvertida = moment(dataDigitada, 'DDMMYYYY');
+
+
+    // colocar uma / apos 2 digitos digitados
+    // for(let i = 0; i < dataConvertida.length; i++){
+    //     if(dataConvertida.length === 2){
+    //         console.log('passou do 2')
+    //     }
+    // }
+
+
+    //validar se é uma data futura
+
+
+    //validar se a data digitada possui 18 anos acima
+    let maiorDe18 = dataDeHoje.diff(dataConvertida, 'years') >= 18; 
 
 
     //verificar se a data é uma data valida;
@@ -114,8 +132,13 @@ const validarData = () => {
     if (!possuiOitoCaracteres){
         ehValido = false;
     }
+    if(!maiorDe18){
+        ehValido = false;
+    }
     
-    ehValido = dataExistente && possuiOitoCaracteres;
+
+    ehValido = dataExistente && possuiOitoCaracteres && maiorDe18;
+
 
     //mostrar pra o usuario se ta valido ou nao o que ele inserir;
     if(!ehValido && dataDigitada !== '') {
