@@ -159,19 +159,28 @@ const validarLogin = () => {
 
 //#region Listando usuarios cadastrados do banco usando GET
 const listarUsuarios = () => {
+
+
     // Endpoint
     axios.get('http://localhost:3000/colaboradores').then(response => {
+        
         response.data.forEach(e => {
-            console.log(e)
-            let emailLista = document.createElement('li');
-            let senhaLista = document.createElement('li');
-            let dataNascimentoLista = document.createElement('li');
-            emailLista.innerText = e.email;
-            senhaLista.innerText = e.senha;
-            dataNascimentoLista.innerText = e.dataNascimento;
-            document.getElementById('user-list').appendChild(emailLista);
-            document.getElementById('user-list').appendChild(senhaLista);
-            document.getElementById('user-list').appendChild(dataNascimentoLista);
+            let li = document.createElement('li');
+            let botaoEditar = document.createElement('button');
+            let botaoExcluir = document.createElement('button');
+            let div = document.createElement('div');
+            botaoEditar.innerText = "Editar"
+            botaoExcluir.innerText = "Excluir"
+            div.appendChild(li);
+            div.appendChild(botaoEditar);
+            div.appendChild(botaoExcluir);
+            document.getElementById("user-list").appendChild(div)
+            li.innerText = e.nome;
+            div.setAttribute('class', 'd-flex bg-secondary')
+            botaoEditar.setAttribute('class', 'mr-4 ml-4')
+            botaoEditar.setAttribute('id', e.id);
+            botaoExcluir.setAttribute('id', e.id);
+            console.log(div);
         })
     }).catch(error => console.error(error));
 };
@@ -222,17 +231,27 @@ const atualizarColaborador = () => {
 }
 //#endregion Atualizar um colaborador no banco usando PUT
 
-//#region Buscar dados do colaborador usando GET
-const buscarDadosColaborador = () => {
+//#region Buscar dados do colaborador usando GET e set esses dados nos inputs
+const buscarDadosColaboradorSetarNosInputs = () => {
+    let codigoColaborador = 2;
+    let nomeInput = document.getElementById("name-input-edit");
+    let dataInput = document.getElementById('date-input-edit');
+    let emailInput = document.getElementById('email-input-edit');
+    let senhaInput = document.getElementById('password-input-edit');
+
+    let colaborador = new Colaborador(nomeInput.value, dataInput.value, emailInput.value, senhaInput.value );
+
+    axios.get(`http://localhost:3000/colaboradores/${codigoColaborador}`).then((response => {
+        response.data.forEach(e => {
+
+        })
+    })).catch(error => console.error(error));
+
 
 };
-//#endregion Buscar dados do colaborador usando GET
+//#endregion Buscar dados do colaborador usando GET e set esses dados nos inputs
 
-//#region Colocar dados nos inputs do atualizar
-const ColocarDadosNosInputs = () => {
 
-};
-//#endregion Colocar dados nos inputs do atualizar
 
 // -------------------------Classes-------------------------
 

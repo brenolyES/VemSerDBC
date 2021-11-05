@@ -69,14 +69,50 @@
             </div>
         </form>
 
+        <form id="edit" class="w-50 pb-3 border border-primary rounded flex-column align-items-center justify-content-center d-none">
+            <div class="bg bg-primary w-100 h-100 text-center p-2 text-white">
+                <span>Cadastro</span>
+            </div>
+
+            <div class="p-3 d-flex flex-column">
+                <span>Nome*</span>
+                <input id="name-input-edit" onkeyup="validarNome()">
+                <span id="name-edit-error" class="d-none">Nome inválida</span>
+            </div>
+
+            <div class="p-3 d-flex flex-column">
+                <span>Data de Nascimento*</span>
+                <input id="date-input-edit" onkeyup="validarData()" maxlength="10">
+                <span id="date-edit-error" class="d-none">Data inválida</span>
+            </div>
+
+            <div class="p-3 d-flex flex-column">
+                <span>Email*</span>
+                <input id="email-input-edit" onkeyup="validarEmail()">
+                <span id="email-edit-error" class="d-none">Email inválido</span>
+            </div>
+
+            <div class="p-3 d-flex flex-column">
+                <span>Senha*</span>
+                <input id="password-input-edit" onkeyup="validarSenha()">
+                <span id="password-edit-error" class="d-none">Senha inválida</span>
+            </div>
+
+            <div class="w-50 d-flex justify-content-between">
+                <button type="button" onclick="irPara('edit', 'home')">Voltar</button>
+                <button type="button" id="register-btn" onclick="return validarCadastro()">Confirmar Atualização</button>
+            </div>
+            <div>
+            </div>
+        </form>
+
         <div id="home" class="w-50 pb-3 border border-primary rounded flex-column align-items-center justify-content-center d-none">
             <div class="bg bg-primary w-100 h-100 text-center p-2 text-white">
                 <span>Página Inicial</span>
             </div>
 
             <button class="mt-3" type="button" onclick="listarUsuarios()">Pesquisar usuários</button>
-            <button class="mt-3" type="button" onclick="deletarUsuario()">Deletar usuario</button>
-            <button class="mt-3" type="button" onclick="atualizarColaborador()">Atualizar usuario</button>
+            <button class="mt-3" type="button" onclick="irPara('home', 'edit')">editar usuario</button>
 
             <ul id="user-list">
                 <!--Lista que será utilizada para exibir os usuários-->
