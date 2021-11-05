@@ -1,0 +1,22 @@
+{
+  "colaboradores": [
+    {
+      "dataNascimento": "16/07/1990",
+      "email": "joaozinho@dbccompany.com.br",
+      "senha": "123Ab!",
+      "id": 1
+    },
+    {
+      "email": "brenolyporto2@gmail.com",
+      "senha": "1!Aaaaaa",
+      "dataNascimento": "19/09/1999",
+      "id": 2
+    },
+    {
+      "email": "brenolyporto2@gmail.com",
+      "senha": "1",
+      "dataNascimento": "19/09/1999",
+      "id": 2
+    }
+  ]
+}
