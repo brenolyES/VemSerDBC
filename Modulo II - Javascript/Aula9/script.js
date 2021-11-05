@@ -1,4 +1,10 @@
 
+//#region Validação de Nome
+const validarNome = () => {
+    console.log(document.getElementById("name-input-registration").value)
+}
+//#endregion Validação de Nome
+
 //#region Validação Email
 const validarEmail = () => {
     let emailDigitado = document.getElementById('email-input-registration').value;
@@ -52,7 +58,7 @@ const validarSenha = () => {
     erroSenha.setAttribute('class', ehValido ? 'd-none' : 'text-danger');
 
     return ehValido;
-}
+};
 //#endregion Validação Senha
 
 //#region Validação Data
@@ -101,18 +107,40 @@ const adicionarMascaraData = (input, data) => {
 }
 //#endregion Validação Data
 
-
+//#region Resetar Campos
 const resetarCampos = (...campos) => {
     campos.forEach(c => c.value = '');
-}
+};
+//#endregion
 
+//#region Ir Para Outra Pagina
 const irPara = (origem, destino) => {
     let elementoOrigem = document.getElementById(origem);
     let elementoDestino = document.getElementById(destino);
     elementoDestino.className = elementoDestino.className.replace('d-none', 'd-flex');
     elementoOrigem.className = elementoOrigem.className.replace('d-flex', 'd-none');
+};
+//#endregion Ir Para Outra Pagina
+
+//#region Validar dados dos inputs do cadastro
+const validarCadastro = () => {
+    let cadastroValido = validarData() && validarEmail() && validarSenha();
+    console.log(`Cadastro ${cadastroValido ? 'válido!' : 'inválido'}`);
+
+    if(cadastroValido) {
+        cadastrarUsuario();
+    }
+};
+//#endregion Validar dados dos inputs do cadastro
+
+// dica: utilizar para o editar
+const irParaComClick = evento => {
+    console.log(evento);
 }
 
+// -------------------------Metodos GET - POST - PUT - DELETE-------------------------
+
+//#region Validar longin com os dados do banco usando GET
 const validarLogin = () => {
     axios.get('http://localhost:3000/colaboradores')
         .then(response => {
@@ -126,19 +154,13 @@ const validarLogin = () => {
             }
         })
         .catch(error => console.error(error));
-}
+};
+//#endregion Validar longin com os dados do banco usando GET
 
+//#region Listando usuarios cadastrados do banco usando GET
 const listarUsuarios = () => {
-    // aqui entra lógica de GET para os usuários
-
-    // console.log("oi");
-    // let lista = [];
-
-    // let listadeLi = document.createElement('li');
-    // listadeLi.innerText = "Oi"
-    // document.getElementById('user-list').appendChild(listadeLi);
-
-    axios.get('http://localhost:3000/colaboradores').then( response => {
+    // Endpoint
+    axios.get('http://localhost:3000/colaboradores').then(response => {
         response.data.forEach(e => {
             console.log(e)
             let emailLista = document.createElement('li');
@@ -152,44 +174,80 @@ const listarUsuarios = () => {
             document.getElementById('user-list').appendChild(dataNascimentoLista);
         })
     }).catch(error => console.error(error));
-
 };
+//#endregion Listando usuarios cadastrados do banco usando GET
 
-
-
-
-
-
-const validarCadastro = () => {
-    let cadastroValido = validarData() && validarEmail() && validarSenha();
-    console.log(`Cadastro ${cadastroValido ? 'válido!' : 'inválido'}`);
-
-    if(cadastroValido) {
-        cadastrarUsuario();
-    }
-}
-
+//#region Cadastrar colaborador no banco usando POST
 const cadastrarUsuario = () => {
+
+    let nomeInput = document.getElementById("name-input-registration");
     let dataInput = document.getElementById('date-input-registration');
     let emailInput = document.getElementById('email-input-registration');
     let senhaInput = document.getElementById('password-input-registration');
 
-    // aqui entra lógica de POST para salvar usuário
-
-    let colaborador = { 
-        email: emailInput.value,
-        senha: senhaInput.value,
-        dataNascimento: dataInput.value 
-    }
+    let colaborador = new Colaborador(nomeInput.value, dataInput.value, emailInput.value, senhaInput.value );
 
     // Endpoint
     axios.post('http://localhost:3000/colaboradores', colaborador)
         .then((response) => {
             console.log('Colaborador cadastrado => ', response.data);
-            resetarCampos(dataInput, emailInput, senhaInput);
+            resetarCampos(nomeInput, dataInput, emailInput, senhaInput);
             irPara('registration', 'login');
         })
         .catch((error) => {
             console.log('Erro => ', error);
         });
 };
+//#endregion Cadastrar colaborador no banco usando POST
+
+//#region Deletar um colaborador no banco usando DELETE
+const deletarUsuario = () => {
+    let codigoColaborador = Number.parseInt(prompt("codigo do colaborador a excluir: "));
+    axios.delete(`http://localhost:3000/colaboradores/${codigoColaborador}`).catch(error => console.error(error));
+}
+//#endregion Deletar um colaborador
+
+//#region Atualizar um colaborador no banco usando PUT
+const atualizarColaborador = () => {
+    let codigoColaboradorAtualizar = Number.parseInt(prompt("codigo do colaborador a excluir: "));
+    let nomeTeste = "teste"
+    let dataNascimentoTeste = "00/00/0000"
+    let emailTeste = "teste@gmail.com"
+    let senhaTeste = "000000000"
+
+    let atualizarColaborador = new Colaborador(nomeTeste, dataNascimentoTeste, emailTeste, senhaTeste);
+
+    //enpoint
+    axios.put(`http://localhost:3000/colaboradores/${codigoColaboradorAtualizar}`, atualizarColaborador).catch(error => console.error(error));
+}
+//#endregion Atualizar um colaborador no banco usando PUT
+
+//#region Buscar dados do colaborador usando GET
+const buscarDadosColaborador = () => {
+
+};
+//#endregion Buscar dados do colaborador usando GET
+
+//#region Colocar dados nos inputs do atualizar
+const ColocarDadosNosInputs = () => {
+
+};
+//#endregion Colocar dados nos inputs do atualizar
+
+// -------------------------Classes-------------------------
+
+//#region Classe de Colaborador
+class Colaborador {
+    nome = '';
+    dataNascimento = '';
+    email = '';
+    senha = '';
+
+    constructor(nomeParametro, dataNascimentoParametro, emailParametro, senhaParamentro){
+        this.nome = nomeParametro;
+        this.dataNascimento = dataNascimentoParametro;
+        this.email = emailParametro;
+        this.senha = senhaParamentro;
+    }
+};
+//#endregion Classe de Colaborador
