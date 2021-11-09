@@ -100,15 +100,17 @@ const validarData = () => {
     let dataDeHoje = moment();
     let inputData = document.getElementById('date-input-registration');
     let dataDigitada = inputData.value;
+    let tirarBarras = dataDigitada.replaceAll('/', '');
     let dataConvertida = moment(dataDigitada, 'DDMMYYYY');
 
 
     // colocar uma / apos 2 digitos digitados
-    // for(let i = 0; i < dataConvertida.length; i++){
-    //     if(dataConvertida.length === 2){
-    //         console.log('passou do 2')
-    //     }
-    // }
+    
+    if(tirarBarras.length === 2){
+        inputData.value = tirarBarras + '/';
+    }else if(tirarBarras.length === 4){
+        inputData.value = tirarBarras[0] + tirarBarras[1] + "/" + tirarBarras[2] + tirarBarras[3] + "/";
+    }
 
 
     //validar se é uma data futura
